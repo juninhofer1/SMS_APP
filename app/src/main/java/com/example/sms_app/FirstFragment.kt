@@ -34,8 +34,7 @@ class FirstFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+    fun registerBroadcastSMS() {
         mBroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent) {
                 when (intent.action) {
@@ -50,10 +49,14 @@ class FirstFragment : Fragment() {
         activity?.registerReceiver(mBroadcastReceiver, filter)
     }
 
+    override fun onResume() {
+        registerBroadcastSMS()
+        super.onResume()
+    }
+
     override fun onDestroy() {
         activity?.unregisterReceiver(mBroadcastReceiver)
         super.onDestroy()
-
     }
 
 
