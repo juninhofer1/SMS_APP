@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
@@ -36,16 +37,16 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener {
-            ActivityCompat.requestPermissions(
-                this, arrayOf(
-                    Manifest.permission.SEND_SMS,
-                    Manifest.permission.READ_SMS,
-                    Manifest.permission.RECEIVE_SMS
-                ), PackageManager.PERMISSION_GRANTED
-            )
+            Toast.makeText(applicationContext, "Click FAB", Toast.LENGTH_LONG).show()
         }
 
-
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.READ_SMS,
+                Manifest.permission.RECEIVE_SMS
+            ), PackageManager.PERMISSION_GRANTED
+        )
     }
 
     override fun onResume() {
