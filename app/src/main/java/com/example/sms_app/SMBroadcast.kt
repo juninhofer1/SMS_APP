@@ -14,7 +14,7 @@ class SMBroadcast : BroadcastReceiver() {
             for (message in smsMessages) {
                 if(message.messageBody.contains("ATS Frete Conta Digital")) {
                     val it = Intent(BroadcastAction.KEY_SMS)
-                    it.putExtra(BundleKey.KEY_CODE_SMS, message.messageBody.numberOfString())
+                    it.putExtra(BundleKey.KEY_CODE_SMS, message.messageBody.numbersOfString())
                     context?.sendBroadcast(it)
                 }
             }
@@ -34,6 +34,6 @@ class BundleKey {
     }
 }
 
-fun String.numberOfString(): String{
+fun String.numbersOfString(): String{
    return this.replace("[^0-9]".toRegex(), "")
 }
